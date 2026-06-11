@@ -1,0 +1,10 @@
+# Netlify configuration for Voidlet (Next.js App Router).
+# Netlify's Next.js runtime is auto-detected; the plugin is declared
+# explicitly so local `netlify build` matches CI.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

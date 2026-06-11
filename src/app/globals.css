@@ -1,26 +1,135 @@
 @import "tailwindcss";
 
+/* =============================================================
+   VOIDLET DESIGN TOKENS
+   Carried over from the original voidlet.com dark theme.
+   These custom properties are the single source of truth;
+   the @theme block below maps them into Tailwind utilities.
+   ============================================================= */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-base: #0c0d11;
+  --bg-surface: #111318;
+  --bg-card: #13161d;
+  --bg-card-hover: #161a23;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-accent: rgba(133, 102, 255, 0.45);
+  --accent: #8566ff;
+  --accent-soft: rgba(133, 102, 255, 0.12);
+  --accent-glow: rgba(133, 102, 255, 0.35);
+  --teal: #136f63;
+  --teal-soft: rgba(19, 111, 99, 0.15);
+  --text-primary: #eeeef2;
+  --text-muted: #7a7f92;
+  --text-faint: #454960;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors — usable as bg-base, bg-card, text-fg, text-muted,
+     border-line, border-line-accent, bg-accent, etc. */
+  --color-base: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-card: var(--bg-card);
+  --color-card-hover: var(--bg-card-hover);
+  --color-line: var(--border);
+  --color-line-accent: var(--border-accent);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-glow: var(--accent-glow);
+  --color-teal: var(--teal);
+  --color-teal-soft: var(--teal-soft);
+  --color-fg: var(--text-primary);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+
+  /* Typography */
+  --font-display: var(--font-syne);
+  --font-sans: var(--font-dm-sans);
+
+  /* Radii — rounded-card / rounded-card-sm */
+  --radius-card: 12px;
+  --radius-card-sm: 8px;
+
+  /* Motion — ease-smooth */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =============================================================
+   BASE
+   ============================================================= */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent), var(--teal));
+  border-radius: 5px;
+}
+
+/* =============================================================
+   MOTION
+   One subtle entrance animation, used on the hero only.
+   ============================================================= */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.7s var(--ease-smooth) both;
+}
+.rise-in-delay-1 {
+  animation-delay: 0.1s;
+}
+.rise-in-delay-2 {
+  animation-delay: 0.2s;
+}
+.rise-in-delay-3 {
+  animation-delay: 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+  }
 }
