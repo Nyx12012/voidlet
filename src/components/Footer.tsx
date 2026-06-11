@@ -25,13 +25,13 @@ export default function Footer() {
             Developer tools and digital products, built in the open by one
             developer.
           </p>
-          <p className="mt-6 text-xs text-faint">
+          <p className="mt-6 text-xs text-muted">
             © {new Date().getFullYear()} Voidlet. All rights reserved.
           </p>
         </div>
 
         <nav aria-label="Footer">
-          <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-faint">
+          <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-muted">
             Site
           </h2>
           <ul className="flex flex-col gap-2.5">
@@ -49,14 +49,14 @@ export default function Footer() {
         </nav>
 
         <div>
-          <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-faint">
+          <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-muted">
             At launch
           </h2>
           <ul className="flex flex-col gap-2.5">
             {atLaunch.map((label) => (
-              <li key={label} className="flex items-center gap-2 text-sm text-faint">
+              <li key={label} className="flex items-center gap-2 text-sm text-muted">
                 {label}
-                <span className="rounded-full bg-teal-soft px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-teal">
+                <span className="rounded-full bg-teal-soft px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-teal-bright">
                   soon
                 </span>
               </li>

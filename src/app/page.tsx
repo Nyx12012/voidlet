@@ -103,7 +103,7 @@ export default function Home() {
                     className={
                       product.available
                         ? "rounded-full border border-line-accent bg-accent-soft px-3 py-1 text-xs font-medium text-fg"
-                        : "rounded-full bg-teal-soft px-3 py-1 text-xs font-medium text-teal"
+                        : "rounded-full bg-teal-soft px-3 py-1 text-xs font-medium text-teal-bright"
                     }
                   >
                     {product.status}
@@ -113,7 +113,7 @@ export default function Home() {
                   {product.name}
                 </h3>
                 <p className="mt-3 flex-1 text-sm text-muted">{product.pitch}</p>
-                <p className="mt-6 text-sm font-medium text-faint">{product.price}</p>
+                <p className="mt-6 text-sm font-medium text-muted">{product.price}</p>
               </Card>
             ))}
           </div>
@@ -131,7 +131,7 @@ export default function Home() {
           <div className="grid gap-10 md:grid-cols-3">
             {reasons.map((reason) => (
               <div key={reason.title}>
-                <span className="mb-4 inline-flex rounded-card-sm bg-teal-soft p-3 text-teal">
+                <span className="mb-4 inline-flex rounded-card-sm bg-teal-soft p-3 text-teal-bright">
                   <reason.icon size={22} aria-hidden />
                 </span>
                 <h3 className="font-display text-base font-bold text-fg">
