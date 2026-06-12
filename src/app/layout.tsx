@@ -3,6 +3,7 @@ import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { createClient, hasSupabaseEnv } from "@/lib/supabase/server";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -32,15 +33,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Skipped when Supabase env vars are absent so the site still builds and
+  // renders (logged-out view) before the project is configured.
+  let userEmail: string | null = null;
+  if (hasSupabaseEnv()) {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    userEmail = user?.email ?? null;
+  }
+
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <Header />
+        <Header userEmail={userEmail} />
         <main id="top" className="flex-1 pt-[68px]">
           {children}
         </main>

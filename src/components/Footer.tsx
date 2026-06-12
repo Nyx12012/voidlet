@@ -1,13 +1,15 @@
 import Container from "@/components/Container";
 
 const siteLinks = [
-  { href: "#products", label: "Products" },
-  { href: "#why", label: "Why Voidlet" },
+  { href: "/#products", label: "Products" },
+  { href: "/#why", label: "Why Voidlet" },
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/account", label: "Account" },
 ];
 
-// Routes that ship in later phases (auth, payments, roadmap). Listed as
+// Routes that ship in later phases (payments, roadmap). Listed as
 // plain text until they exist — no dead links allowed on this site.
-const atLaunch = ["Pricing", "Dashboard", "Roadmap"];
+const atLaunch = ["Pricing", "Roadmap"];
 
 export default function Footer() {
   return (
