@@ -11,6 +11,11 @@ const siteLinks = [
 // plain text until they exist — no dead links allowed on this site.
 const atLaunch = ["Pricing", "Roadmap"];
 
+const legalLinks = [
+  { href: "/legal/terms", label: "Terms of Service" },
+  { href: "/legal/privacy", label: "Privacy Policy" },
+];
+
 export default function Footer() {
   return (
     <footer className="border-t border-line bg-surface">
@@ -61,6 +66,22 @@ export default function Footer() {
                 <span className="rounded-full bg-teal-soft px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-teal-bright">
                   soon
                 </span>
+              </li>
+            ))}
+          </ul>
+
+          <h2 className="mb-4 mt-8 text-xs font-medium uppercase tracking-[0.2em] text-muted">
+            Legal
+          </h2>
+          <ul className="flex flex-col gap-2.5">
+            {legalLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-muted transition-colors duration-300 ease-smooth hover:text-fg"
+                >
+                  {link.label}
+                </a>
               </li>
             ))}
           </ul>

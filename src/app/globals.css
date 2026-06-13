@@ -135,3 +135,51 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =============================================================
+   LEGAL PROSE
+   Typographic styles for static policy pages (terms, privacy).
+   ============================================================= */
+.legal-prose {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.legal-prose h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-syne), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+.legal-prose p {
+  margin-bottom: 1rem;
+}
+.legal-prose ul {
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.legal-prose li {
+  margin-bottom: 0.4rem;
+}
+.legal-prose a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition);
+}
+.legal-prose a:hover {
+  text-decoration-color: var(--accent);
+}
+.legal-prose hr {
+  margin: 2.5rem 0 1.5rem;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+.legal-prose em {
+  color: var(--text-faint);
+  font-style: italic;
+}
